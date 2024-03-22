@@ -8,28 +8,7 @@ export default function Dungeon() {
     const [roomCount, setRoomCount] = useState(5);
     const [dungeonWidth, setDungeonWidth] = useState(50);
     const [dungeonHeight, setDungeonHeight] = useState(50);
-    const [loading, isLoading] = useState(true);
 
-    if(isLoading){
-        return (
-            <>
-                <form>
-                    Enter Dungeon Width: <input defaultValue={50} type="text" pattern="[0-9]*"
-                                                value={dungeonWidth}
-                                                onChange={e => setDungeonWidth(e.target.value)} min="4"/><br/>
-                    Enter Dungeon Height: <input defaultValue={50} type="text" pattern="[0-9]*"
-                                                 value={dungeonHeight}
-                                                 onChange={e => setDungeonHeight(e.target.value)} min="4"/><br/>
-
-                    Enter Number of Rooms: <input defaultValue={5} type="text" pattern="[0-9]*"
-                                                  value={roomCount}
-                                                  onChange={e => setRoomCount(e.target.value)} min="1"/><br/>
-
-                    <Button onClick={fetchDungeon}>Generate Dungeon</Button>
-                </form>
-            </>
-        );
-    }
     useEffect(() => {
         fetchDungeon();
     }, []);
@@ -44,9 +23,6 @@ export default function Dungeon() {
                 })
     };
 
-
-
-    if (!loading) {
         let map = dungeon.dungeonFloor;
         let tileMap = []
 
@@ -76,6 +52,5 @@ export default function Dungeon() {
                 </form>
                 {tileMap}
             </>
-                );
-    }
+    );
 }
