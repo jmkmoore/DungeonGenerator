@@ -127,7 +127,7 @@ public class Dungeon {
             return;
         }
 
-        if(tile1X > tile2X && tile1Y > tile2Y) {
+        if(tile1X > tile2X && tile1Y >= tile2Y) {
             if (Math.random() > .5) {
                 buildPath(tile1X - 1, tile1Y, tile2X, tile2Y);
             } else {
@@ -135,7 +135,7 @@ public class Dungeon {
             }
         }
 
-        else if (tile1X > tile2X && tile1Y < tile2Y){
+        else if (tile1X > tile2X && tile1Y <= tile2Y){
             if (Math.random() > .5) {
                 buildPath(tile1X - 1, tile1Y, tile2X, tile2Y);
             } else {

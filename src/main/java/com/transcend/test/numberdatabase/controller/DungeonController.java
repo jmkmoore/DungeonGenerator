@@ -26,7 +26,7 @@ public class DungeonController {
     public ResponseEntity<Dungeon> generateDungeon(@RequestParam(defaultValue = "5") int RoomNumber, @RequestParam(defaultValue = "20") int dungeonHeight, @RequestParam(defaultValue = "20") int dungeonWidth) {
         dungeonMaker = new DungeonCreationService();
         if(RoomNumber < 1){
-            RoomNumber = 1;
+            RoomNumber = 4;
         }
         if(dungeonHeight < 4){
             dungeonHeight = 4;
