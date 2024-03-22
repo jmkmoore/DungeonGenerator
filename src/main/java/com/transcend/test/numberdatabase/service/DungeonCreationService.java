@@ -43,10 +43,12 @@ public class DungeonCreationService {
         for(RoomBaseTile roomBaseTile: dungeon.getKnownRooms()){
             connectedRooms = roomBaseTile.getConnectedTiles();
             for(RoomBaseTile tile: connectedRooms.keySet()) {
-                if (!roomBaseTile.getConnectedTiles().get(tile)) {
-                    dungeon.buildPath(roomBaseTile.getX(), roomBaseTile.getY(), tile.getX(), tile.getY());
-                }
+                dungeon.buildPath(roomBaseTile.getX(), roomBaseTile.getY(), tile.getX(), tile.getY());
             }
+        }
+
+        for(RoomBaseTile roomBaseTile: dungeon.getKnownRooms()){
+            dungeon.fillRoom(roomBaseTile);
         }
 
         return dungeon;

@@ -219,63 +219,10 @@ public class Dungeon {
     }
 
     public void fillRoom(RoomBaseTile startTile){
-        int isSquare = (int) (Math.random() * 2);
-        int isHorizontalish = (int) (Math.random() * 2);
-
-        if(isSquare%2 == 1){
-            for(int i = startTile.getY() - 1; i < startTile.getY() +1; i++){
-                for(int j = startTile.getX() -1; j < startTile.getX() + 1; j++){
-                    if(isValidRoom(j,i)) {
-                        if (dungeonFloor[j][i].equals("*")) {
-                            dungeonFloor[j][i] = ".";
-                        } else {
-                            dungeonFloor[j][i] = "*";
-                        }
-                    }
-                }
-            }
-        } else if(isHorizontalish%2 == 1) {
-            int roomWidth = (int) (Math.random() * getWidth());
-            int roomHeight = (int) (Math.random() * getHeight() % knownRooms.size());
-            int largeDimension = Math.max(roomHeight,roomWidth);
-            int smallPerimter = Math.min(roomHeight, roomWidth);
-            if(smallPerimter < 2){
-                smallPerimter = 2;
-            }
-            if(largeDimension < 3) {
-                largeDimension = 3;
-            }
-            for (int i = startTile.getY() - (smallPerimter / 2); i < startTile.getY() + (smallPerimter / 2); i++) {
-                for (int j = startTile.getX() - (largeDimension / 2); j < startTile.getX() + (largeDimension / 2); j++) {
-                    if(isValidRoom(j,i)) {
-                        if (dungeonFloor[j][i].equals("*")) {
-                            dungeonFloor[j][i] = ".";
-                        } else {
-                            dungeonFloor[j][i] = "*";
-                        }
-                    }
-                }
-            }
-        } else {
-            int roomWidth = (int) (Math.random() * getWidth() % knownRooms.size());
-            int roomHeight = (int) (Math.random() * getHeight());
-            int largeDimension = Math.max(roomHeight,roomWidth);
-            int smallPerimter = Math.min(roomHeight, roomWidth);
-            if(smallPerimter < 2){
-                smallPerimter = 2;
-            }
-            if(largeDimension < 3) {
-                largeDimension = 3;
-            }
-            for (int i = startTile.getY() - (roomHeight / 2); i < startTile.getY() + (largeDimension / 2); i++) {
-                for (int j = startTile.getX() - (roomWidth / 2); j < startTile.getX() + (smallPerimter / 2); j++) {
-                    if (isValidRoom(j, i)) {
-                        if (dungeonFloor[j][i].equals("*")) {
-                            dungeonFloor[j][i] = ".";
-                        } else {
-                            dungeonFloor[j][i] = "*";
-                        }
-                    }
+        for(int i = startTile.getY() - 2; i < startTile.getY() +2; i++){
+            for(int j = startTile.getX() -2; j < startTile.getX() + 2; j++){
+                if(isValidRoom(i,j)) {
+                    dungeonFloor[i][j] = "*";
                 }
             }
         }
