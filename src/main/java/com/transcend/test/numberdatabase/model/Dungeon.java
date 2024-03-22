@@ -126,7 +126,7 @@ public class Dungeon {
         if(tile1X == tile2X && tile1Y == tile2Y){
             return;
         }
-        
+
         if(tile1X > tile2X && tile1Y > tile2Y) {
             if (Math.random() > .5) {
                 buildPath(tile1X - 1, tile1Y, tile2X, tile2Y);
