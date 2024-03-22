@@ -4,6 +4,8 @@ To start the webservice, navigate to main directory and run command
 ### `./mvnw spring-boot:run`
 
 ---
+If Node is not installed, install Node before beginning the rest of the setup.
+
 To install any dependencies for the webpage, run npm install in the app directory
 
 ### `npm install`
