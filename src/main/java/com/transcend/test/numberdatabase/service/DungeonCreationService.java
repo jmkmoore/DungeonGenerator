@@ -47,6 +47,9 @@ public class DungeonCreationService {
             }
         }
 
+        /**
+         * After paths are created, expend upon root room tiles to flesh out dungeon size some
+         */
         for(RoomBaseTile roomBaseTile: dungeon.getKnownRooms()){
             dungeon.fillRoom(roomBaseTile);
         }

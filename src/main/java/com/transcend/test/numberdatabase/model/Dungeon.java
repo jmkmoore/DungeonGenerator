@@ -160,6 +160,13 @@ public class Dungeon {
         }
     }
 
+    /**
+     * Path builder to go directly to other room without any fun stuff. No RNG
+     * @param tile1X
+     * @param tile1Y
+     * @param tile2X
+     * @param tile2Y
+     */
     public void buildNonRandomPath(int tile1X, int tile1Y, int tile2X, int tile2Y){
         if(tile1X < 0){
             tile1X = 0;
@@ -220,6 +227,10 @@ public class Dungeon {
 
     }
 
+    /**
+     * Expand upon room a little bit, could be a bit better to make rooms less uniform
+     * @param startTile
+     */
     public void fillRoom(RoomBaseTile startTile){
         for(int i = startTile.getY() - 2; i < startTile.getY() +2; i++){
             for(int j = startTile.getX() -2; j < startTile.getX() + 2; j++){
