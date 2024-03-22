@@ -2,6 +2,11 @@ HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
 
+#dependencies
+*/node_modules
+/.pnp
+.pnp.js
+
 ### STS ###
 .apt_generated
 .classpath
