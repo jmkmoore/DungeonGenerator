@@ -23,6 +23,7 @@ export default function Dungeon() {
                 })
     };
 
+    if(dungeon) {
         let map = dungeon.dungeonFloor;
         let tileMap = []
 
@@ -52,5 +53,6 @@ export default function Dungeon() {
                 </form>
                 {tileMap}
             </>
-    );
+        );
+    }
 }
