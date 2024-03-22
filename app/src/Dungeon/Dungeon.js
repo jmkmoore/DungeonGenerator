@@ -9,19 +9,18 @@ export default function Dungeon() {
     const [dungeonWidth, setDungeonWidth] = useState(50);
     const [dungeonHeight, setDungeonHeight] = useState(50);
 
-    useEffect(() => {
-        fetchDungeon();
-    }, []);
-
-
     const fetchDungeon = async() => {
             const response = await fetch(`api/dungeon?RoomNumber=${roomCount}&dungeonHeight=${dungeonHeight}&dungeonWidth=${dungeonWidth}`)
                 .then(response => response.json())
                 .then(data => {
                     setDungeon(data);
-                    setDungeon(false);
                 })
     };
+
+    useEffect(() => {
+        fetchDungeon();
+    }, []);
+
 
     if(dungeon) {
         let map = dungeon.dungeonFloor;
