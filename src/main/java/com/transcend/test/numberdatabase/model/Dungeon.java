@@ -34,6 +34,12 @@ public class Dungeon {
         knownRooms = new ArrayList<>(numberOfRooms);
     }
 
+    /**
+     * Checkes whether indicated tile is inside dimensions of dungeon
+     * @param x
+     * @param y
+     * @return
+     */
     public boolean isValidRoom(int x, int y) {
         if((x <= width && x > 0) && (y < height && y > 0))
             return (!dungeonFloor[y][x].equals("|"));
@@ -48,6 +54,12 @@ public class Dungeon {
             return false;
     }
 
+    /**
+     * Adds a room to the list of rooms known by the dungeon
+     * @param x
+     * @param y
+     * @return
+     */
     public RoomBaseTile addRoom(int x, int y){
         RoomBaseTile room = new RoomBaseTile(x, y);
         knownRooms.add(new RoomBaseTile(x, y));
@@ -55,6 +67,9 @@ public class Dungeon {
         return room;
     }
 
+    /**
+     * Tells the rooms which rooms they are connected to
+     */
     public void connectRooms(){
         for(int h = 0; h < knownRooms.size(); h++){
             if(knownRooms.get(h).connectedTiles.keySet().size() > 3){
@@ -84,6 +99,13 @@ public class Dungeon {
         }
     }
 
+    /**
+     * Random-esque path building, helps expand rooms by building out wide with some variance to path building
+     * @param tile1X
+     * @param tile1Y
+     * @param tile2X
+     * @param tile2Y
+     */
     public void buildPath(int tile1X, int tile1Y, int tile2X, int tile2Y){
         if(tile1X < 0){
             tile1X = 0;
@@ -104,27 +126,7 @@ public class Dungeon {
         if(tile1X == tile2X && tile1Y == tile2Y){
             return;
         }
-
-        if(tile1X == tile2X){
-            if(tile1Y < tile2Y){
-                buildPath(tile1X, tile1Y + 1, tile2X, tile2Y);
-                return;
-            } else {
-                buildPath(tile1X, tile1Y - 1, tile2X, tile2Y);
-                return;
-            }
-        }
-
-        if(tile1Y == tile2Y){
-            if(tile1X < tile2X){
-                buildPath(tile1X + 1, tile1Y , tile2X, tile2Y);
-                return;
-            } else {
-                buildPath(tile1X  - 1, tile1Y , tile2X, tile2Y);
-                return;
-            }
-        }
-
+        
         if(tile1X > tile2X && tile1Y > tile2Y) {
             if (Math.random() > .5) {
                 buildPath(tile1X - 1, tile1Y, tile2X, tile2Y);
@@ -141,7 +143,7 @@ public class Dungeon {
             }
         }
 
-        else if(tile1X < tile2X && tile1Y > tile2Y) {
+        else if(tile1X <= tile2X && tile1Y > tile2Y) {
             if (Math.random() > .5) {
                 buildPath(tile1X + 1, tile1Y, tile2X, tile2Y);
             } else {
@@ -149,7 +151,7 @@ public class Dungeon {
             }
         }
 
-        else if (tile1X < tile2X && tile1Y < tile2Y){
+        else if (tile1X <= tile2X && tile1Y < tile2Y){
             if (Math.random() > .5) {
                 buildPath(tile1X + 1, tile1Y, tile2X, tile2Y);
             } else {
